@@ -1,0 +1,98 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        "balance": {
+          ".write": "auth != null && (auth.uid == $uid || root.child('users').child(auth.uid).child('isAdmin').val() == true)"
+        },
+        "totalTrialEarnings": {
+          ".write": "auth != null && (auth.uid == $uid || root.child('users').child(auth.uid).child('isAdmin').val() == true)"
+        },
+        "activePackage": {
+          ".write": "auth != null && (auth.uid == $uid || root.child('users').child(auth.uid).child('isAdmin').val() == true)"
+        },
+        "isBanned": {
+          ".write": "root.child('users').child(auth.uid).child('isAdmin').val() == true"
+        },
+        "isAdmin": {
+          ".write": "root.child('users').child(auth.uid).child('isAdmin').val() == true"
+        }
+      }
+    },
+
+    "miningSessions": {
+      "$sessionId": {
+        ".read": "auth != null && data.child('userId').val() == auth.uid",
+        ".write": "auth != null && (
+          (!data.exists() && newData.child('userId').val() == auth.uid) ||
+          (data.child('userId').val() == auth.uid)
+        )"
+      },
+      ".read": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() == true"
+    },
+
+    "paymentNotifications": {
+      "$notificationId": {
+        ".read": "auth != null && (
+          data.child('userId').val() == auth.uid ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )",
+        ".write": "auth != null && (
+          (!data.exists() && newData.child('userId').val() == auth.uid) ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )"
+      },
+      ".read": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() == true"
+    },
+
+    "withdrawalRequests": {
+      "$requestId": {
+        ".read": "auth != null && (
+          data.child('userId').val() == auth.uid ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )",
+        ".write": "auth != null && (
+          (!data.exists() && newData.child('userId').val() == auth.uid) ||
+          (data.child('userId').val() == auth.uid && data.child('status').val() == 'pending') ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )"
+      },
+      ".read": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() == true"
+    },
+
+    "supportTickets": {
+      "$ticketId": {
+        ".read": "auth != null && (
+          data.child('userId').val() == auth.uid ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )",
+        ".write": "auth != null && (
+          (!data.exists() && newData.child('userId').val() == auth.uid) ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )"
+      },
+      ".read": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() == true"
+    },
+
+    "referralBonuses": {
+      "$bonusId": {
+        ".read": "auth != null && (
+          data.child('referrerId').val() == auth.uid ||
+          data.child('referredUserId').val() == auth.uid ||
+          root.child('users').child(auth.uid).child('isAdmin').val() == true
+        )",
+        ".write": "auth != null"
+      }
+    },
+
+    "securityLogs": {
+      "$logId": {
+        ".read": "root.child('users').child(auth.uid).child('isAdmin').val() == true",
+        ".write": "auth != null"
+      },
+      ".read": "root.child('users').child(auth.uid).child('isAdmin').val() == true"
+    }
+  }
+}

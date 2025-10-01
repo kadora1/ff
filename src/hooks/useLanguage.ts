@@ -26,7 +26,9 @@ export const useLanguage = () => {
 
 export const useLanguageProvider = () => {
   const [language, setLanguageState] = useState(() => {
-    return detectUserLanguage();
+    const detectedLang = detectUserLanguage();
+    setDocumentLanguage(detectedLang);
+    return detectedLang;
   });
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -56,6 +58,11 @@ export const useLanguageProvider = () => {
           localStorage.setItem('language', browserLang);
           setDocumentLanguage(browserLang);
         }
+      } else {
+        const browserLang = detectUserLanguage();
+        setLanguageState(browserLang);
+        localStorage.setItem('language', browserLang);
+        setDocumentLanguage(browserLang);
       }
 
       setIsInitialized(true);

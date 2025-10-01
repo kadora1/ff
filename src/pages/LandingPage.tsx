@@ -79,23 +79,23 @@ export const LandingPage: React.FC = () => {
             </div>
             
             <div className="hidden md:flex space-x-8">
-              <a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</a>
-              <a href="#özellikler" className="text-gray-300 hover:text-white transition-colors">Özellikler</a>
-              <a href="#madencilik" className="text-gray-300 hover:text-white transition-colors">Madencilik</a>
-              <a href="#paketler" className="text-gray-300 hover:text-white transition-colors">Paketler</a>
-              <a href="#sss" className="text-gray-300 hover:text-white transition-colors">SSS</a>
+              <a href="/blog" className="text-gray-300 hover:text-white transition-colors">{t('blog')}</a>
+              <a href="#özellikler" className="text-gray-300 hover:text-white transition-colors">{t('features')}</a>
+              <a href="#madencilik" className="text-gray-300 hover:text-white transition-colors">{t('mining')}</a>
+              <a href="#paketler" className="text-gray-300 hover:text-white transition-colors">{t('packages2')}</a>
+              <a href="#sss" className="text-gray-300 hover:text-white transition-colors">{t('faq')}</a>
             </div>
             
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
             
-            <Link 
-              to="/auth" 
+            <Link
+              to="/auth"
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105"
-              aria-label="Ücretsiz $25 bonus al"
+              aria-label={t('freeBonus')}
             >
-              Ücretsiz $25 Bonus Al
+              {t('freeBonus')}
             </Link>
           </nav>
         </div>

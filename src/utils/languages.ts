@@ -5,7 +5,9 @@ export const supportedLanguages: Language[] = [
   { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' }
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+  { code: 'zh', name: '中文', flag: '🇨🇳' }
 ];
 
 export const translations: Record<string, Translation> = {
@@ -467,6 +469,236 @@ export const translations: Record<string, Translation> = {
     hours: 'ساعات',
     minutes: 'دقائق',
     seconds: 'ثواني'
+  },
+
+  ru: {
+    // Navigation
+    dashboard: 'Панель управления',
+    mining: 'Майнинг',
+    packages: 'Пакеты',
+    withdrawal: 'Вывод средств',
+    profile: 'Профиль',
+    admin: 'Администратор',
+    support: 'Поддержка',
+    logout: 'Выйти',
+    settings: 'Настройки',
+
+    // Auth
+    login: 'Войти',
+    register: 'Регистрация',
+    email: 'Электронная почта',
+    password: 'Пароль',
+    forgotPassword: 'Забыли пароль',
+    resetPassword: 'Сбросить пароль',
+    confirmPassword: 'Подтвердите пароль',
+    selectLanguage: 'Выберите язык',
+
+    // Dashboard
+    totalBalance: 'Общий баланс',
+    trialEarnings: 'Пробные заработки',
+    activePackage: 'Активный пакет',
+    freeTrial: 'Бесплатная пробная версия',
+    welcomeBack: 'С возвращением',
+    quickActions: 'Быстрые действия',
+    recentActivity: 'Последняя активность',
+
+    // Mining
+    startMining: 'Начать майнинг',
+    stopMining: 'Остановить майнинг',
+    hashRate: 'Хешрейт',
+    earnings: 'Заработок',
+    miningActive: 'Майнинг активен',
+    selectCoin: 'Выбрать монету',
+    miningRules: 'Правила майнинга',
+
+    // Packages
+    selectPackage: 'Выбрать пакет',
+    paymentInstructions: 'Инструкции по оплате',
+    copyAddress: 'Скопировать адрес',
+    paymentNotification: 'Уведомление об оплате',
+
+    // Profile
+    accountInfo: 'Информация об аккаунте',
+    balanceEarnings: 'Баланс и заработок',
+    trialStatus: 'Статус пробной версии',
+
+    // Support
+    contactSupport: 'Связаться с поддержкой',
+    supportEmail: 'Email поддержки',
+    createTicket: 'Создать заявку в поддержку',
+    subject: 'Тема',
+    message: 'Сообщение',
+    priority: 'Приоритет',
+
+    // Company
+    companyName: 'CryptoCloud Mining GmbH',
+    companyAddress: 'Berliner Allee 12, 40212 Düsseldorf, Germany',
+
+    // Landing Page
+    heroTitle: 'Получайте пассивный доход с помощью майнинга криптовалют',
+    heroSubtitle: 'Зарабатывайте ежедневно, добывая Bitcoin, Ethereum, Solana и более 8 криптовалют. Безопасные инвестиции с профессиональным сервисом облачного майнинга.',
+    freeBonus: 'Получить бесплатный бонус $25',
+    howItWorks: 'Как это работает?',
+    whyChooseUs: 'Почему CryptoCloud Mining?',
+    secureTitle: '100% безопасно',
+    secureDesc: 'Ваши данные полностью защищены с помощью SSL-шифрования и многоуровневых систем безопасности.',
+    highPerformanceTitle: 'Высокая производительность',
+    highPerformanceDesc: 'Максимальный хешрейт и эффективность с самым современным оборудованием для майнинга.',
+    dailyPaymentsTitle: 'Ежедневные выплаты',
+    dailyPaymentsDesc: 'Ваш заработок рассчитывается ежедневно и добавляется на ваш баланс.',
+
+    // Common
+    loading: 'Загрузка...',
+    save: 'Сохранить',
+    cancel: 'Отмена',
+    submit: 'Отправить',
+    close: 'Закрыть',
+    success: 'Успешно',
+    error: 'Ошибка',
+    warning: 'Предупреждение',
+    info: 'Информация',
+    yes: 'Да',
+    no: 'Нет',
+    confirm: 'Подтвердить',
+    delete: 'Удалить',
+    edit: 'Редактировать',
+    view: 'Просмотр',
+    back: 'Назад',
+    next: 'Далее',
+    previous: 'Предыдущий',
+
+    // Status
+    active: 'Активно',
+    inactive: 'Неактивно',
+    pending: 'В ожидании',
+    approved: 'Одобрено',
+    rejected: 'Отклонено',
+    completed: 'Завершено',
+
+    // Time
+    today: 'Сегодня',
+    yesterday: 'Вчера',
+    thisWeek: 'На этой неделе',
+    thisMonth: 'В этом месяце',
+    days: 'дней',
+    hours: 'часов',
+    minutes: 'минут',
+    seconds: 'секунд'
+  },
+
+  zh: {
+    // Navigation
+    dashboard: '仪表板',
+    mining: '挖矿',
+    packages: '套餐',
+    withdrawal: '提现',
+    profile: '个人资料',
+    admin: '管理员',
+    support: '支持',
+    logout: '退出',
+    settings: '设置',
+
+    // Auth
+    login: '登录',
+    register: '注册',
+    email: '电子邮箱',
+    password: '密码',
+    forgotPassword: '忘记密码',
+    resetPassword: '重置密码',
+    confirmPassword: '确认密码',
+    selectLanguage: '选择语言',
+
+    // Dashboard
+    totalBalance: '总余额',
+    trialEarnings: '试用收益',
+    activePackage: '活跃套餐',
+    freeTrial: '免费试用',
+    welcomeBack: '欢迎回来',
+    quickActions: '快捷操作',
+    recentActivity: '最近活动',
+
+    // Mining
+    startMining: '开始挖矿',
+    stopMining: '停止挖矿',
+    hashRate: '算力',
+    earnings: '收益',
+    miningActive: '挖矿中',
+    selectCoin: '选择币种',
+    miningRules: '挖矿规则',
+
+    // Packages
+    selectPackage: '选择套餐',
+    paymentInstructions: '支付说明',
+    copyAddress: '复制地址',
+    paymentNotification: '支付通知',
+
+    // Profile
+    accountInfo: '账户信息',
+    balanceEarnings: '余额和收益',
+    trialStatus: '试用状态',
+
+    // Support
+    contactSupport: '联系支持',
+    supportEmail: '支持邮箱',
+    createTicket: '创建支持工单',
+    subject: '主题',
+    message: '消息',
+    priority: '优先级',
+
+    // Company
+    companyName: 'CryptoCloud Mining GmbH',
+    companyAddress: 'Berliner Allee 12, 40212 Düsseldorf, Germany',
+
+    // Landing Page
+    heroTitle: '通过加密货币挖矿获得被动收入',
+    heroSubtitle: '通过挖掘比特币、以太坊、索拉纳和8种以上加密货币获得每日收益。专业云挖矿服务的安全投资。',
+    freeBonus: '获得免费$25奖金',
+    howItWorks: '如何运作？',
+    whyChooseUs: '为什么选择 CryptoCloud Mining？',
+    secureTitle: '100% 安全',
+    secureDesc: '您的数据通过SSL加密和多层安全系统得到完全保护。',
+    highPerformanceTitle: '高性能',
+    highPerformanceDesc: '最先进的挖矿硬件提供最大算力和效率。',
+    dailyPaymentsTitle: '每日支付',
+    dailyPaymentsDesc: '您的收益每天计算并添加到您的余额中。',
+
+    // Common
+    loading: '加载中...',
+    save: '保存',
+    cancel: '取消',
+    submit: '提交',
+    close: '关闭',
+    success: '成功',
+    error: '错误',
+    warning: '警告',
+    info: '信息',
+    yes: '是',
+    no: '否',
+    confirm: '确认',
+    delete: '删除',
+    edit: '编辑',
+    view: '查看',
+    back: '返回',
+    next: '下一步',
+    previous: '上一步',
+
+    // Status
+    active: '活跃',
+    inactive: '不活跃',
+    pending: '待处理',
+    approved: '已批准',
+    rejected: '已拒绝',
+    completed: '已完成',
+
+    // Time
+    today: '今天',
+    yesterday: '昨天',
+    thisWeek: '本周',
+    thisMonth: '本月',
+    days: '天',
+    hours: '小时',
+    minutes: '分钟',
+    seconds: '秒'
   }
 };
 
@@ -503,13 +735,18 @@ export const getTranslation = (key: string, lang: string = 'tr'): string => {
 
 export const setDocumentLanguage = (lang: string) => {
   document.documentElement.lang = lang;
-  
+
   // RTL support for Arabic
   if (lang === 'ar') {
     document.documentElement.dir = 'rtl';
     document.body.style.fontFamily = 'Arial, sans-serif';
   } else {
     document.documentElement.dir = 'ltr';
-    document.body.style.fontFamily = '';
+    // Chinese fonts
+    if (lang === 'zh') {
+      document.body.style.fontFamily = '"PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif';
+    } else {
+      document.body.style.fontFamily = '';
+    }
   }
 };

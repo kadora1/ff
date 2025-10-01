@@ -1,4 +1,11 @@
-import { supabase } from '../config/supabase';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 export interface UserLanguagePreference {
   user_id: string;
@@ -11,6 +18,10 @@ export interface UserLanguagePreference {
 
 export const languageService = {
   async getUserLanguagePreference(userId: string): Promise<string | null> {
+    if (!supabase) {
+      return null;
+    }
+
     try {
       const { data, error } = await supabase
         .from('user_preferences')
@@ -19,13 +30,11 @@ export const languageService = {
         .maybeSingle();
 
       if (error) {
-        console.error('Error fetching user language preference:', error);
         return null;
       }
 
       return data?.language || null;
     } catch (error) {
-      console.error('Error in getUserLanguagePreference:', error);
       return null;
     }
   },
@@ -36,6 +45,10 @@ export const languageService = {
     country?: string,
     browserLanguage?: string
   ): Promise<boolean> {
+    if (!supabase) {
+      return false;
+    }
+
     try {
       const { error } = await supabase
         .from('user_preferences')
@@ -53,18 +66,20 @@ export const languageService = {
         );
 
       if (error) {
-        console.error('Error saving user language preference:', error);
         return false;
       }
 
       return true;
     } catch (error) {
-      console.error('Error in saveUserLanguagePreference:', error);
       return false;
     }
   },
 
   async updateUserLanguage(userId: string, language: string): Promise<boolean> {
+    if (!supabase) {
+      return false;
+    }
+
     try {
       const { error } = await supabase
         .from('user_preferences')
@@ -72,13 +87,11 @@ export const languageService = {
         .eq('user_id', userId);
 
       if (error) {
-        console.error('Error updating user language:', error);
         return false;
       }
 
       return true;
     } catch (error) {
-      console.error('Error in updateUserLanguage:', error);
       return false;
     }
   },
@@ -100,7 +113,6 @@ export const languageService = {
       const data = await response.json();
       return data.country_code || null;
     } catch (error) {
-      console.error('Error detecting country:', error);
       return null;
     }
   }

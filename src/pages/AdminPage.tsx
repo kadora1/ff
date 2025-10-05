@@ -3,7 +3,7 @@ import { ref, onValue, set, push, get, update } from 'firebase/database';
 import { database } from '../config/firebase';
 import { useAuth } from '../hooks/useAuth';
 import { PaymentNotification, WithdrawalRequest, User, ReferralBonus, SupportTicket } from '../types';
-import { Check, X, Eye, DollarSign, Users, Package, AlertCircle, MessageCircle, UserCheck, Edit, Plus, Minus } from 'lucide-react';
+import { Check, X, Eye, DollarSign, Users, Package, AlertCircle, MessageCircle, UserCheck, CreditCard as Edit, Plus, Minus } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { format } from 'date-fns';
 import { calculateReferralBonus } from '../utils/miningCalculations';

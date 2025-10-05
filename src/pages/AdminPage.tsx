@@ -213,22 +213,32 @@ export const AdminPage: React.FC = () => {
         // Activate package for user
         const userRef = ref(database, `users/${notification.userId}`);
         const userSnapshot = await get(userRef);
-        
+
         if (userSnapshot.exists()) {
           const userData = userSnapshot.val();
-          
+
           // Calculate package expiry date
-          const packageDuration = notification.packageId === 'starter' ? 90 : 
-                                 notification.packageId === 'professional' ? 90 : 90;
+          const packageDuration = 90;
           const expiryDate = new Date();
           expiryDate.setDate(expiryDate.getDate() + packageDuration);
-          
+
+          // Get package details
+          const packages = {
+            starter: { hashRate: 61920, dailyEarning: 2.99, price: 99 },
+            professional: { hashRate: 187010, dailyEarning: 9.03, price: 299 },
+            enterprise: { hashRate: 312100, dailyEarning: 18.08, price: 599 }
+          };
+
+          const packageDetails = packages[notification.packageId as keyof typeof packages];
+
           await set(userRef, {
             ...userData,
             activePackage: notification.packageId,
             packageActivatedAt: new Date().toISOString(),
             packageExpiresAt: expiryDate.toISOString(),
-            balance: (userData.balance || 0) // Ensure balance exists
+            packageHashRate: packageDetails.hashRate,
+            packageDailyEarning: packageDetails.dailyEarning,
+            balance: (userData.balance || 0)
           });
 
           // Referans bonusu kontrolü ve ödeme
